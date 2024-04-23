@@ -1,0 +1,22 @@
+using System;
+using ComInteropExample; // Import the namespace of the interop assembly
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Instantiate an object from the class defined in the DLL
+        ComInteropClass comInteropObj = new ComInteropClass();
+
+        // Call methods defined in the class
+        int resultAddition = comInteropObj.PerformAddition(10, 5);
+        Console.WriteLine("Addition result: " + resultAddition);
+
+        int resultSubtraction = comInteropObj.PerformDeletion(10, 5);
+        Console.WriteLine("Subtraction result: " + resultSubtraction);
+
+        // Wait for user input before closing the console window
+        Console.WriteLine("Press any key to exit...");
+        Console.ReadKey();
+    }
+}
