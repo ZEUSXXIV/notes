@@ -1,0 +1,47 @@
+using System;
+using System.Runtime.InteropServices;
+
+
+namespace ComInteropExample
+{
+    [Guid("EC87B398-B775-4e6f-BE2C-997D4594CFAA")]
+    [InterfaceType(ComInterfaceType.InterfaceIsIDispatch)]
+    public interface iInterface
+    {
+        [DispId(1)]
+        int PerformAddition(int a, int b);
+
+        [DispId(2)]
+        int PerformDeletion(int a, int b);
+    }
+
+    [Guid("0C216A19-E1B7-4b05-86D3-4C516BDDC041")]
+    [ClassInterface(ClassInterfaceType.None)]
+    [ProgId("ComInteropClass")]
+    public class ComInteropClass : iInterface
+    {
+        public int PerformAddition(int a, int b)
+        {
+            try
+            {
+                return a + b;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public int PerformDeletion(int a, int b)
+        {
+            try
+            {
+                return a - b;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+    }
+}
